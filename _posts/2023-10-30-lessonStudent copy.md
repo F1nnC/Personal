@@ -1,0 +1,149 @@
+---
+title: Lesson 9.1 Hierarchy Student
+author: david
+categories: ['Lesson']
+tags: ['Collegeboard', 'Java', 'Unit 9']
+type: hacks
+week: 11
+description: Lesson on Java class hierarchy.
+toc: True
+comments: True
+date: 2023-10-30 13:00:00 +0000
+---
+
+## 9.1 Superclasses and Subclasses
+> A hierarchy of classes is created, extending attributes into subclasses of information (ie. Automobile --> Trucks and Sedans --> Ford, BMW, Nissan, Toyota). 
+
+### Pre-Requisites
+
+Before we start you need to remember what classes and methods are. Scopes of variables are also important to this section because you need to know which classes can access which variables before extending a variable across classes.
+
+#### Scope of Variables:
+
+Variables can be declared as private or public.
+
+> **Popcorn Hack:** What are scope do private and public variables allow?
+
+| Private | Public |
+|-|-|
+| only directly accessible within the class they are declared | accessible anywhere inside and outside their class |
+
+These are different types of variables. Only `INSTANCE` and `STATIC` variables can be declared as ____ or ____.
+
+| Variable Type | Definition | Scope within Class | Scope to Subclasses |
+|-|-|-|-|
+|  | variables within methods | cannot be accessed outside method | cannot be accessed outside class |
+|  | variables within a class but not inside a method | can be accessed in entire class | can be accessed in subclasses |
+|  | variables that belong to a class, not instance | can be accessed in entire class | can be accessed in subclasses |
+|  | variables specific in passing values to the method | cannot be accessed outside method | do not affect inheritance |
+
+Now we can go into class hierarchies.
+
+### Class Hierarchy
+
+**Definitions**
+- Superclasses - a class that contains all the common ____ and ____ that could be shared among other classes (a blueprint for subclasses)
+- Subclasses - extends the ____ to is specified by a superclass; can also have additional specific attributes
+- "Is-A" Relationship - the relationship when a subclass ____ a superclass (ie. Automobile --> Sedan; a Sedan "is-a" automobile)
+
+#### `extends` Keyword
+> extends the ____ from the ____
+
+
+```java
+class Automobile {
+  public String brand; // public instance var
+  private String model; // private instance var
+
+  public Automobile(String brand, String model) {
+    this.brand = brand;
+    this.model = model;
+  }
+
+  public void start() {
+    System.out.println("Car is starting");
+  }
+}
+
+class Truck extends Automobile {
+  public int cargoCapacity; // subclass specific var
+
+  // instance that is specific to the Truck subclass, with vars from Automobile class
+  public Truck(String brand, String model, int cargoCapacity) {
+    super(brand, model); // inherited vars
+    this.cargoCapacity = cargoCapacity;
+  }
+
+  // specific method to Truck
+  public void loadCargo() {
+    System.out.println("Loading cargo into the truck");
+  }
+}
+
+class Sedan extends Automobile {
+  public boolean isLuxury; // subclass specific var
+
+  // instance that is specific to the Sedan subclass, with vars from Automobile class
+  public Sedan(String brand, String model, boolean isLuxury) {
+    super(brand, model); // inherited vars
+    this.isLuxury = isLuxury;
+  }
+
+  // specific method to Sedan
+  public void accelerate() {
+    System.out.println("Sedan is accelerating");
+  }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Automobile car = new Automobile("Toyota", "Camry");
+        Truck truck = new Truck("Ford", "F-150", 1000);
+        Sedan sedan = new Sedan("BMW", "328i", true);
+
+        // automobile methods and variables
+        System.out.println(car.brand); // Accessing public variable
+        // System.out.println(car.model); // compilation error because of the private var
+        car.start();
+
+
+        // truck methods and variables
+        System.out.println(truck.brand); // inherited public var
+        System.out.println(truck.cargoCapacity); // public var specific to truck
+        truck.loadCargo();
+
+
+        // sedan methods and variables
+        System.out.println(sedan.brand); // inherited public var
+        System.out.println(sedan.isLuxury); // public var specific to sedan
+        sedan.accelerate();
+    }
+}
+
+Main.main(null);
+```
+
+    Toyota
+    Car is starting
+    Ford
+    1000
+    Loading cargo into the truck
+    BMW
+    true
+    Sedan is accelerating
+
+
+This example shows how the `Automobile` class is extended twice, with the `Truck` and `Sedan` subclasses.
+
+> **Popcorn Hack:** If I were to declare a variable `color` that is `private` in the class Automobile, would I be able to extend and directly access that variable to the subclass `Truck` or `Sedan`?
+
+A: No, you would need to encapsulate the private variable as shown above, through a method in the superclass and then inherit that var with `super()`, which will be explained later.
+
+## Hacks
+
+Create a superclass with at least 2 subclasses based on your own topic.
+
+- Create a DrawIO diagram for your structure
+- Create a superclass on your own topic
+- Create at least two subclasses
+- Each class must create at least two methods, one private and public variable, and examples of local, static, instance, and parameter variables
