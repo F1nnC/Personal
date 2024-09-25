@@ -20,7 +20,7 @@ timezone: America/Los_Angeles
 
 title: Finn Carpenter # the main title
 
-tagline: Personal Site portfolio # it will display as the sub-title
+tagline: Personal Portfolio # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   Finn Carpenter's Blog
@@ -92,7 +92,7 @@ comments:
     issue_term: # < url | pathname | title | ...>
   # Giscus options › https://giscus.app
   giscus:
-    repo: "DavidVasilev1/Personal" # <gh-username>/<repo>
+    repo: "F1nnC/Personal" # <gh-username>/<repo>
     repo_id: "R_kgDOKKTbvg"
     category: "Comments"
     category_id: "DIC_kwDOKKTbvs4CY3sm"
