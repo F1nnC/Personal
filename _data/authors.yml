@@ -6,10 +6,6 @@
 #   url: {homepage_of_author}
 # -------------------------------------
 
-david:
-  name: David Vasilev
-  url: https://github.com/DavidVasilev1/
-
-mort:
-  name: John Mortensen
-  url: https://github.com/jm1021
+finn:
+  name: Finn Carpenter
+  url: https://github.com/F1nnC/
