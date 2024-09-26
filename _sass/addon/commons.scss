@@ -29,7 +29,7 @@ html {
 }
 
 body {
-  background: var(--main-bg);
+  background: #01404a;
   padding: env(safe-area-inset-top) env(safe-area-inset-right)
     env(safe-area-inset-bottom) env(safe-area-inset-left);
   color: var(--text-color);
@@ -175,7 +175,7 @@ kbd {
 
 footer {
   font-size: 0.8rem;
-  background-color: var(--main-bg);
+  background-color: #01404a;
 
   @extend %text-color;
 
@@ -947,7 +947,7 @@ $btn-mb: 0.5rem;
   width: 100%;
   border-radius: 1rem;
   border: 1px solid var(--search-wrapper-border-color);
-  background: var(--main-bg);
+  background: #01404a;
   padding: 0 0.5rem;
 
   i {
